@@ -1,25 +1,25 @@
 <?php
 
 class Admin_model {
-    private $dbh; // database handler
-    private $stmt;
+    private $table = 'm_admin';
+    private $db;
 
     public function __construct()
     {
-        // data source name
-        $dsn = 'mysql:host=localhost;dbname=sipdp_kelsaru';
-
-        try {
-            $this->dbh = new PDO($dsn, 'root', '');
-        } catch(PDOException $e) {
-            die($e->getMessage());
-        }
+        $this->db = new Database;
     }
 
     public function getAllAdmin()
     {
-        $this->stmt = $this->dbh->prepare('SELECT * FROM m_admin');
-        $this->stmt->execute(); // menjalankan query
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC); // ambil semua data
+        $this->db->query('SELECT * FROM '.$this->table);
+        return $this->db->resultSet();
+    }
+
+    public function getAdminById($id)
+    {
+        $this->db->query('SELECT * FROM '.$this->table.' WHERE id_admin=:id_admin');
+        $this->db->bind('id_admin', $id);
+
+        return $this->db->single();
     }
 }
