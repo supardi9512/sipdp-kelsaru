@@ -5,6 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1>Selamat Datang</h1>
+                    <p>Halo, nama saya <?= $data['nama']; ?></p>
                 </div>
             </div>
         </div>

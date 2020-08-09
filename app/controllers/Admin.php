@@ -1,11 +1,10 @@
 <?php
 
 class Admin extends Controller {
-    public function index($nama = 'Supardi', $pekerjaan = 'Programmer')
+    public function index()
     {
-        $data['nama'] = $nama;
-        $data['pekerjaan'] = $pekerjaan;
-        $data['title'] = 'Admin';
+        $data['title'] = 'Daftar Admin';
+        $data['admin'] = $this->model('Admin_model')->getAllAdmin();
 
         $this->view('templates/header', $data);
         $this->view('admin/index', $data);

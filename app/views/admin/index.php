@@ -5,7 +5,12 @@
             <div class="card">
                 <div class="card-body">
                     <h1>Halaman Admin</h1>
-                    <p>Halo, nama saya <?= $data['nama']; ?></p>
+                    <?php foreach($data['admin'] as $admin) : ?>
+                        <ul>
+                            <li><?= $admin['username']; ?></li>
+                            <li><?= $admin['nama_admin']; ?></li>
+                        </ul>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

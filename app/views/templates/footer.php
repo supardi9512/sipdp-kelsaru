@@ -1,3 +1,4 @@
+        <div class="clearfix"></div>
     </div>
     <!-- /#right-panel -->
 
