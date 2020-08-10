@@ -51,8 +51,8 @@
                                     <td><?= $admin['nama_admin']; ?></td>
                                     <td><?= $admin['username']; ?></td>
                                     <td class="text-center">
-                                        <a href="<?= BASEURL; ?>/admin/edit" class="btn btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                        <a href="<?= BASEURL; ?>/admin/edit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                                        <a href="<?= BASEURL; ?>/admin/edit" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Edit</a>
+                                        <a href="<?= BASEURL; ?>/admin/edit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
