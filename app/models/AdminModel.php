@@ -1,6 +1,6 @@
 <?php
 
-class Admin_model {
+class AdminModel {
     private $table = 'm_admin';
     private $db;
 

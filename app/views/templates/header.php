@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Halaman <?= $data['title']; ?></title>
+    <title>SIPDP-KELSARU | <?= $data['title']; ?></title>
     <meta name="description" content="Sistem Informasi Pengolahan Data Penduduk RT/RW Kelurahan Sawah Baru">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,8 +27,9 @@
 
     <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?= BASEURL; ?>/public/css/lib/datatable/dataTables.bootstrap.min.css">
 
-   <style>
+    <style>
         #weatherWidget .currentDesc {
             color: #ffffff!important;
         }
@@ -80,7 +81,7 @@
                 ?>
                 <ul class="nav navbar-nav">
                     <li class="<?= ($first_part == "") ? "active" : "noactive"; ?>">
-                        <a href="<?= BASEURL; ?>"><i class="menu-icon fa fa-home"></i>Dashboard </a>
+                        <a href="<?= BASEURL; ?>"><i class="menu-icon fa fa-home"></i>Home</a>
                     </li>
                     <li class="<?= ($first_part == "admin") ? "active" : "noactive"; ?>">
                         <a href="<?= BASEURL; ?>/admin"> <i class="menu-icon fa fa-user"></i>Admin</a>
@@ -120,7 +121,7 @@
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand mt-1" href="./"><h3>SIPDP-KELSARU</h3></a>
+                    <a class="navbar-brand mt-1" href="<?= BASEURL; ?>"><h3>SIPDP-KELSARU</h3></a>
                     <a id="menuToggle" class="menutoggle align-top"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
@@ -129,7 +130,7 @@
 
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <button class="btn btn-warning">Admin</button>
+                            <button class="btn btn-secondary">Admin</button>
                         </a>
 
                         <div class="user-menu dropdown-menu">

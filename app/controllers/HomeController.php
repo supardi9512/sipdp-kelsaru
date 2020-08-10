@@ -1,10 +1,9 @@
 <?php
 
-class Home extends Controller {
+class HomeController extends Controller {
     public function index()
     {
         $data['title'] = 'Home';
-        $data['nama'] = $this->model('User_model')->getUser();
 
         // memanggil file header.php dan footer.php di dalam folder views/templates/
         // memanggil file index.php di dalam folder views/home/

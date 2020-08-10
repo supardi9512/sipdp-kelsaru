@@ -1,4 +1,13 @@
         <div class="clearfix"></div>
+        <footer class="site-footer">
+            <div class="footer-inner bg-white">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        &copy; 2020 Sistem Informasi Pengolahan Data Penduduk - RT/RW Kelurahan Sawah Baru
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
     <!-- /#right-panel -->
 
@@ -24,6 +33,21 @@
     <script src="<?= BASEURL; ?>/public/js/init/weather-init.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
-
+    
+    <script src="<?= BASEURL; ?>/public/js/lib/data-table/datatables.min.js"></script>
+    <script src="<?= BASEURL; ?>/public/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+    <script src="<?= BASEURL; ?>/public/js/lib/data-table/dataTables.buttons.min.js"></script>
+    <script src="<?= BASEURL; ?>/public/js/lib/data-table/buttons.bootstrap.min.js"></script>
+    <script src="<?= BASEURL; ?>/public/js/lib/data-table/jszip.min.js"></script>
+    <script src="<?= BASEURL; ?>/public/js/lib/data-table/vfs_fonts.js"></script>
+    <script src="<?= BASEURL; ?>/public/js/lib/data-table/buttons.html5.min.js"></script>
+    <script src="<?= BASEURL; ?>/public/js/lib/data-table/buttons.print.min.js"></script>
+    <script src="<?= BASEURL; ?>/public/js/lib/data-table/buttons.colVis.min.js"></script>
+    <script src="<?= BASEURL; ?>/public/js/init/datatables-init.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#bootstrap-data-table-export').DataTable();
+        } );
+    </script>
 </body>
 </html>

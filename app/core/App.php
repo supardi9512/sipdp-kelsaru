@@ -1,7 +1,7 @@
 <?php
 
 class App {
-    protected $controller = 'Home';
+    protected $controller = 'HomeController';
     protected $method = 'index';
     protected $params = [];
 
@@ -14,9 +14,9 @@ class App {
         }
         
         // mengecek file controller yang sesuai dengan url index ke-0
-        if(file_exists('./app/controllers/'.ucwords($url[0]).'.php')) {
+        if(file_exists('./app/controllers/'.ucwords($url[0]).'Controller.php')) {
             // ubah variable controller default dengan url index ke-0
-            $this->controller = ucwords($url[0]);
+            $this->controller = ucwords($url[0]).'Controller';
             // hilangkan url index ke-0 dari elemen array
             unset($url[0]);
         }
