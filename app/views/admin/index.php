@@ -27,6 +27,11 @@
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="card-body">
+                    <div class="row mx-1">
+                        <div class="col-lg-12 col-md-12">
+                            <?php Flasher::success(); ?>
+                        </div>
+                    </div>
                     <div class="row mb-3 mx-3">
                         <div class="col-md-12 px-0">
                             <a href="<?= BASEURL; ?>/admin/create" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Add Data</a>
@@ -36,6 +41,7 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
+                                <th>ID Admin</th>
                                 <th>Nama</th>
                                 <th>Username</th>
                                 <th>Action</th>
@@ -48,6 +54,7 @@
                             ?>
                                 <tr>
                                     <td><?= $no++; ?></td>
+                                    <td><?= $admin['id_admin']; ?></td>
                                     <td><?= $admin['nama_admin']; ?></td>
                                     <td><?= $admin['username']; ?></td>
                                     <td class="text-center">

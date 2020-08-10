@@ -35,15 +35,18 @@
                         </div>
                         <div class="form-group">
                             <label for="namaAdmin" class="form-control-label">Nama</label>
-                            <input type="text" id="namaAdmin" name="nama_admin" placeholder="Masukkan Nama Admin" class="form-control" autocomplete="off" required autofocus>
+                            <?php Flasher::error('nama_admin'); ?>
+                            <input type="text" id="namaAdmin" name="nama_admin" placeholder="Masukkan Nama Admin" class="form-control" value="<?php Flasher::old_data('nama_admin'); ?>" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="username" class="form-control-label">Username</label>
-                            <input type="text" id="username" name="username" placeholder="Masukkan Username Admin" class="form-control" autocomplete="off" required>
+                            <?php Flasher::error('username'); ?>
+                            <input type="text" id="username" name="username" placeholder="Masukkan Username Admin" class="form-control" value="<?php Flasher::old_data('username'); ?>" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="password" class="form-control-label">Password</label>
-                            <input type="password" id="password" name="password" placeholder="Masukkan Password Admin" class="form-control" autocomplete="off" required>
+                            <?php Flasher::error('password'); ?>
+                            <input type="password" id="password" name="password" placeholder="Masukkan Password Admin" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-actions form-group float-right">
                             <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-floppy-o"></i> Create</button>

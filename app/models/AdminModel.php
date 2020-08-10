@@ -11,7 +11,7 @@ class AdminModel {
 
     public function getAll()
     {
-        $this->db->query('SELECT * FROM '.$this->table);
+        $this->db->query('SELECT * FROM '.$this->table.' ORDER BY id_admin DESC');
         return $this->db->resultSet();
     }
 
@@ -19,6 +19,14 @@ class AdminModel {
     {
         $this->db->query('SELECT * FROM '.$this->table.' WHERE id_admin=:id_admin');
         $this->db->bind('id_admin', $id);
+
+        return $this->db->single();
+    }
+
+    public function getByUsername($username)
+    {
+        $this->db->query('SELECT * FROM '.$this->table.' WHERE username=:username');
+        $this->db->bind('username', $username);
 
         return $this->db->single();
     }
