@@ -91,4 +91,13 @@ class AdminController extends Controller {
             }
         }
     }
+
+    public function delete($id)
+    {
+        if($this->model('AdminModel')->delete($id) > 0) {
+            Flasher::set_success('Data admin berhasil dihapus.', 'success');
+            header('Location: '.BASEURL.'/admin');
+            exit;
+        }
+    }
 }

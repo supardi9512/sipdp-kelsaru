@@ -58,8 +58,8 @@
                                     <td><?= $admin['nama_admin']; ?></td>
                                     <td><?= $admin['username']; ?></td>
                                     <td class="text-center">
-                                        <a href="<?= BASEURL; ?>/admin/edit" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Edit</a>
-                                        <a href="<?= BASEURL; ?>/admin/edit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                        <a href="<?= BASEURL; ?>/admin/edit/<?= $admin['id_admin']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Edit</a>
+                                        <a class="btn btn-danger btn-sm" href="#" onclick="sweet_<?= str_replace('-', '', $admin['id_admin']); ?>()"><i class="fa fa-trash"></i> Delete</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -71,3 +71,27 @@
     </div>
 </div>
 <!-- /.content -->
+<?php foreach($data['admin'] as $admin) { ?>
+  <script type="text/javascript">
+    function sweet_<?= str_replace('-', '', $admin['id_admin']); ?>() {
+      swal({
+        title: "Anda Yakin Ingin Menghapus Data Ini?",
+        text: "Data yang sudah dihapus tidak dapat dikembalikan!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if(willDelete) {
+          swal(window.location.assign("<?= BASEURL; ?>/admin/delete/<?= $admin['id_admin']; ?>"), {
+            icon: "success",
+          });
+        } else {
+          swal("Batal Hapus Data!", {
+              icon: "error",
+          })
+        }
+      });;
+    }
+  </script>
+<?php } ?>

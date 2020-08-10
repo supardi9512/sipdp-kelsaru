@@ -51,4 +51,15 @@ class AdminModel {
 
         return $this->db->rowCount();
     }
+
+    public function delete($id)
+    {
+        $query = "DELETE FROM m_admin WHERE id_admin = :id_admin";
+        $this->db->query($query);
+        $this->db->bind('id_admin', $id);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }
