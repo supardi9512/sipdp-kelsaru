@@ -13,7 +13,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="<?= BASEURL; ?>">Home</a></li>
-                            <li><a href="<?= BASEURL; ?>/admin">Data Admin</a></li>
+                            <li><a href="<?= BASEURL; ?>/rw">Data Ketua RW</a></li>
                             <li class="active"><?= $data['title']; ?></li>
                         </ol>
                     </div>
@@ -28,25 +28,30 @@
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="<?= BASEURL; ?>/admin/update" method="post">
+                    <form action="<?= BASEURL; ?>/rw/update" method="post">
                         <div class="form-group">
-                            <label for="idAdmin" class="form-control-label">ID Admin</label>
-                            <input type="text" id="idAdmin" name="id_admin" class="form-control" value="<?= $data['admin']['id_admin']; ?>" readonly>
+                            <label for="idRw" class="form-control-label">ID RW</label>
+                            <input type="text" id="idRw" name="id_rw" class="form-control" value="<?= $data['rw']['id_rw']; ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="namaAdmin" class="form-control-label">Nama</label>
-                            <?php Flasher::error('nama_admin'); ?>
-                            <input type="text" id="namaAdmin" name="nama_admin" placeholder="Masukkan Nama Admin" class="form-control" value="<?= $data['admin']['nama_admin']; ?>" autocomplete="off">
+                            <label for="namaRw" class="form-control-label">Nama</label>
+                            <?php Flasher::error('nama_rw'); ?>
+                            <input type="text" id="namaRw" name="nama_rw" placeholder="Masukkan Nama Ketua RW" class="form-control" value="<?= $data['rw']['nama_rw']; ?>" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="noRw" class="form-control-label">RW</label>
+                            <?php Flasher::error('no_rw'); ?>
+                            <input type="number" id="noRw" name="no_rw" min="001" max="999" placeholder="Masukkan Nomor RW" class="form-control" value="<?= $data['rw']['no_rw']; ?>" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="username" class="form-control-label">Username</label>
                             <?php Flasher::error('username'); ?>
-                            <input type="text" id="username" name="username" placeholder="Masukkan Username Admin" class="form-control" value="<?= $data['admin']['username']; ?>" autocomplete="off">
+                            <input type="text" id="username" name="username" placeholder="Masukkan Username Ketua RW" class="form-control" value="<?= $data['rw']['username']; ?>" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="password" class="form-control-label">Password <span class="text-sm text-muted">(Kosongkan jika tidak ingin diubah!)</span></label>
                             <?php Flasher::error('password'); ?>
-                            <input type="password" id="password" name="password" placeholder="Masukkan Password Admin" class="form-control" autocomplete="off">
+                            <input type="password" id="password" name="password" placeholder="Masukkan Password Ketua RW" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-actions form-group float-right">
                             <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-floppy-o"></i> Update</button>

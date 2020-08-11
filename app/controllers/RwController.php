@@ -61,7 +61,7 @@ class RwController extends Controller {
             $duplicate_no_rw = FALSE;
         }
 
-        if($username == '' || $duplicate_username == TRUE || $duplicate_no_rw == TRUE || $password == '' || $nama_rw == '') {
+        if($username == '' || $duplicate_username == TRUE || $no_rw == '' || $duplicate_no_rw == TRUE || $password == '' || $nama_rw == '') {
             Flasher::setOldData('nama_rw', $nama_rw);
             Flasher::setOldData('username', $username);
             Flasher::setOldData('no_rw', $no_rw);
@@ -91,6 +91,71 @@ class RwController extends Controller {
         } else {
             $this->model('RwModel')->create($_POST);
             Flasher::setSuccess('Data Ketua RW berhasil ditambah.', 'success');
+            header('Location: '.BASEURL.'/rw');
+            exit;
+        }
+    }
+
+    public function edit($id)
+    {
+        $data['title'] = 'Edit Data Ketua RW';
+        
+        $data['rw'] = $this->model('RwModel')->getById($id);        
+
+        $this->view('templates/header', $data);
+        $this->view('rw/edit', $data);
+        $this->view('templates/footer');
+    }
+
+    public function update()
+    {
+        $id_rw = $_POST['id_rw'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $no_rw = $_POST['no_rw'];
+        $nama_rw = $_POST['nama_rw'];
+
+        $data['rw_by_id_n_username'] = $this->model('RwModel')->getByIdAndUsername($id_rw, $username);
+        $data['rw_by_id_n_no'] = $this->model('RwModel')->getByIdAndNo($id_rw, $no_rw);
+
+        if(isset($data['rw_by_id_n_username']['username'])) {
+            $duplicate_username = TRUE;
+        } else {
+            $duplicate_username = FALSE;
+        }
+
+        if(isset($data['rw_by_id_n_no']['no_rw'])) {
+            $duplicate_no_rw = TRUE;
+        } else {
+            $duplicate_no_rw = FALSE;
+        }
+
+        if($username == '' || $duplicate_username == TRUE || $no_rw == '' || $duplicate_no_rw == TRUE || $nama_rw == '') {
+            Flasher::setOldData('nama_rw', $nama_rw);
+            Flasher::setOldData('username', $username);
+            Flasher::setOldData('no_rw', $no_rw);
+
+            if($username == '') {
+                Flasher::setError('Username wajib diisi!', 'danger', 'username');
+            } elseif($duplicate_username == TRUE) {
+                Flasher::setError('Username sudah digunakan!', 'danger', 'username');
+            }
+
+            if($no_rw == '') {
+                Flasher::setError('Nomor RW wajib diisi!', 'danger', 'no_rw');
+            } elseif($duplicate_no_rw == TRUE) {
+                Flasher::setError('Nomor RW sudah digunakan!', 'danger', 'no_rw');
+            }
+
+            if($nama_rw == '') {
+                Flasher::setError('Nama wajib diisi!', 'danger', 'nama_rw');
+            }
+
+            header('Location: '.BASEURL.'/rw/edit/'.$id_rw);
+            exit;
+        } else {
+            $this->model('RwModel')->update($_POST);
+            Flasher::setSuccess('Data Ketua RW berhasil diubah.', 'success');
             header('Location: '.BASEURL.'/rw');
             exit;
         }

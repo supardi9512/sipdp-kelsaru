@@ -15,6 +15,14 @@ class RwModel {
         return $this->db->resultSet();
     }
 
+    public function getById($id)
+    {
+        $this->db->query('SELECT * FROM '.$this->table.' WHERE id_rw=:id_rw');
+        $this->db->bind('id_rw', $id);
+
+        return $this->db->single();
+    }
+
     public function getByUsername($username)
     {
         $this->db->query('SELECT * FROM '.$this->table.' WHERE username=:username');
@@ -26,6 +34,24 @@ class RwModel {
     public function getByNo($no_rw)
     {
         $this->db->query('SELECT * FROM '.$this->table.' WHERE no_rw=:no_rw');
+        $this->db->bind('no_rw', $no_rw);
+
+        return $this->db->single();
+    }
+
+    public function getByIdAndUsername($id, $username)
+    {
+        $this->db->query('SELECT * FROM '.$this->table.' WHERE id_rw NOT IN (:id_rw) AND username=:username');
+        $this->db->bind('id_rw', $id);
+        $this->db->bind('username', $username);
+
+        return $this->db->single();
+    }
+
+    public function getByIdAndNo($id, $no_rw)
+    {
+        $this->db->query('SELECT * FROM '.$this->table.' WHERE id_rw NOT IN (:id_rw) AND no_rw=:no_rw');
+        $this->db->bind('id_rw', $id);
         $this->db->bind('no_rw', $no_rw);
 
         return $this->db->single();
@@ -47,6 +73,34 @@ class RwModel {
         $this->db->bind('password', md5($data['password']));
         $this->db->bind('no_rw', $data['no_rw']);
         $this->db->bind('nama_rw', $data['nama_rw']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function update($data)
+    {
+        if($data['password'] == '') {
+            $query = "UPDATE m_rw SET username = :username, no_rw = :no_rw, nama_rw = :nama_rw 
+                    WHERE id_rw = :id_rw";
+
+            $this->db->query($query);
+            $this->db->bind('id_rw', $data['id_rw']);
+            $this->db->bind('username', $data['username']);
+            $this->db->bind('no_rw', $data['no_rw']);
+            $this->db->bind('nama_rw', $data['nama_rw']);
+        } else {
+            $query = "UPDATE m_rw SET username = :username, password = :password, no_rw = :no_rw, nama_rw = :nama_rw 
+                    WHERE id_rw = :id_rw";
+
+            $this->db->query($query);
+            $this->db->bind('id_rw', $data['id_rw']);
+            $this->db->bind('username', $data['username']);
+            $this->db->bind('password', md5($data['password']));
+            $this->db->bind('no_rw', $data['no_rw']);
+            $this->db->bind('nama_rw', $data['nama_rw']);
+        }
 
         $this->db->execute();
 

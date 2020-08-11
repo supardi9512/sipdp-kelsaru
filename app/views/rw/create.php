@@ -46,12 +46,12 @@
                         <div class="form-group">
                             <label for="username" class="form-control-label">Username</label>
                             <?php Flasher::error('username'); ?>
-                            <input type="text" id="username" name="username" placeholder="Masukkan Username RW" class="form-control" value="<?php Flasher::oldData('username'); ?>" autocomplete="off">
+                            <input type="text" id="username" name="username" placeholder="Masukkan Username Ketua RW" class="form-control" value="<?php Flasher::oldData('username'); ?>" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="password" class="form-control-label">Password</label>
                             <?php Flasher::error('password'); ?>
-                            <input type="password" id="password" name="password" placeholder="Masukkan Password RW" class="form-control" autocomplete="off">
+                            <input type="password" id="password" name="password" placeholder="Masukkan Password Ketua RW" class="form-control" autocomplete="off">
                         </div>
                         <div class="form-actions form-group float-right">
                             <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-floppy-o"></i> Create</button>
