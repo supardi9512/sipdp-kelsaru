@@ -1,7 +1,7 @@
 <?php
 
 class Flasher {
-    public static function set_success($pesan, $tipe)
+    public static function setSuccess($pesan, $tipe)
     {
         $_SESSION['success'] = [
             'pesan' => $pesan,
@@ -9,7 +9,7 @@ class Flasher {
         ];
     }
 
-    public static function set_error($pesan, $tipe, $kolom)
+    public static function setError($pesan, $tipe, $kolom)
     {
         $_SESSION['error_'.$kolom] = [
             'pesan' => $pesan,
@@ -17,7 +17,7 @@ class Flasher {
         ];
     }
 
-    public static function set_old_data($kolom, $data)
+    public static function setOldData($kolom, $data)
     {
         $_SESSION['old_data_'.$kolom] = [
             'data' => $data        
@@ -49,7 +49,7 @@ class Flasher {
         }
     }
 
-    public static function old_data($kolom)
+    public static function oldData($kolom)
     {
         if(isset($_SESSION['old_data_'.$kolom])) {
             echo $_SESSION['old_data_'.$kolom]['data'];

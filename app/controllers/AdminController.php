@@ -64,40 +64,85 @@ class AdminController extends Controller {
         }
 
         if($id_admin == '' || $username == '' || $duplicate_username == TRUE|| $password == '' || $nama_admin == '') {
-            Flasher::set_old_data('nama_admin', $nama_admin);
-            Flasher::set_old_data('username', $username);
+            Flasher::setOldData('nama_admin', $nama_admin);
+            Flasher::setOldData('username', $username);
 
             if($username == '') {
-                Flasher::set_error('Username wajib diisi!', 'danger', 'username');
+                Flasher::setError('Username wajib diisi!', 'danger', 'username');
             } elseif($duplicate_username == TRUE) {
-                Flasher::set_error('Username sudah digunakan!', 'danger', 'username');
+                Flasher::setError('Username sudah digunakan!', 'danger', 'username');
             }
 
             if($password == '') {
-                Flasher::set_error('Password wajib diisi!', 'danger', 'password');
+                Flasher::setError('Password wajib diisi!', 'danger', 'password');
             }
 
             if($nama_admin == '') {
-                Flasher::set_error('Nama wajib diisi!', 'danger', 'nama_admin');
+                Flasher::setError('Nama wajib diisi!', 'danger', 'nama_admin');
             }
 
             header('Location: '.BASEURL.'/admin/create');
             exit;
         } else {
-            if($this->model('AdminModel')->create($_POST) > 0) {
-                Flasher::set_success('Data admin berhasil ditambah.', 'success');
-                header('Location: '.BASEURL.'/admin');
-                exit;
+            $this->model('AdminModel')->create($_POST);
+            Flasher::setSuccess('Data admin berhasil ditambah.', 'success');
+            header('Location: '.BASEURL.'/admin');
+            exit;
+        }
+    }
+
+    public function edit($id)
+    {
+        $data['title'] = 'Edit Data Admin';
+        
+        $data['admin'] = $this->model('AdminModel')->getById($id);        
+
+        $this->view('templates/header', $data);
+        $this->view('admin/edit', $data);
+        $this->view('templates/footer');
+    }
+
+    public function update()
+    {
+        $id_admin = $_POST['id_admin'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $nama_admin = $_POST['nama_admin'];
+
+        $data['admin'] = $this->model('AdminModel')->getByIdAndUsername($id_admin, $username);
+
+        if(isset($data['admin']['username'])) {
+            $duplicate_username = TRUE;
+        } else {
+            $duplicate_username = FALSE;
+        }
+
+        if($username == '' || $duplicate_username == TRUE || $nama_admin == '') {
+            if($username == '') {
+                Flasher::setError('Username wajib diisi!', 'danger', 'username');
+            } elseif($duplicate_username == TRUE) {
+                Flasher::setError('Username sudah digunakan!', 'danger', 'username');
             }
+
+            if($nama_admin == '') {
+                Flasher::setError('Nama wajib diisi!', 'danger', 'nama_admin');
+            }
+
+            header('Location: '.BASEURL.'/admin/edit/'.$id_admin);
+            exit;
+        } else {
+            $this->model('AdminModel')->update($_POST);
+            Flasher::setSuccess('Data admin berhasil diubah.', 'success');
+            header('Location: '.BASEURL.'/admin');
+            exit;
         }
     }
 
     public function delete($id)
     {
-        if($this->model('AdminModel')->delete($id) > 0) {
-            Flasher::set_success('Data admin berhasil dihapus.', 'success');
-            header('Location: '.BASEURL.'/admin');
-            exit;
-        }
+        $this->model('AdminModel')->delete($id);
+        Flasher::setSuccess('Data admin berhasil dihapus.', 'success');
+        header('Location: '.BASEURL.'/admin');
+        exit;
     }
 }
