@@ -106,4 +106,15 @@ class RwModel {
 
         return $this->db->rowCount();
     }
+
+    public function delete($id)
+    {
+        $query = "DELETE FROM m_rw WHERE id_rw = :id_rw";
+        $this->db->query($query);
+        $this->db->bind('id_rw', $id);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }

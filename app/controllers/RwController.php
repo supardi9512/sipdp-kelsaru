@@ -90,7 +90,7 @@ class RwController extends Controller {
             exit;
         } else {
             $this->model('RwModel')->create($_POST);
-            Flasher::setSuccess('Data Ketua RW berhasil ditambah.', 'success');
+            Flasher::setSuccess('Data ketua RW berhasil ditambah.', 'success');
             header('Location: '.BASEURL.'/rw');
             exit;
         }
@@ -155,9 +155,17 @@ class RwController extends Controller {
             exit;
         } else {
             $this->model('RwModel')->update($_POST);
-            Flasher::setSuccess('Data Ketua RW berhasil diubah.', 'success');
+            Flasher::setSuccess('Data ketua RW berhasil diubah.', 'success');
             header('Location: '.BASEURL.'/rw');
             exit;
         }
+    }
+
+    public function delete($id)
+    {
+        $this->model('RwModel')->delete($id);
+        Flasher::setSuccess('Data ketua RW berhasil dihapus.', 'success');
+        header('Location: '.BASEURL.'/rw');
+        exit;
     }
 }
