@@ -48,7 +48,7 @@ class AdminModel {
 
     public function create($data)
     {
-        $query = "INSERT INTO m_admin VALUES (:id_admin, :username, :password, :nama_admin)";
+        $query = "INSERT INTO '.$this->table.' VALUES (:id_admin, :username, :password, :nama_admin)";
 
         $this->db->query($query);
         $this->db->bind('id_admin', $data['id_admin']);
@@ -64,7 +64,7 @@ class AdminModel {
     public function update($data)
     {
         if($data['password'] == '') {
-            $query = "UPDATE m_admin SET username = :username, nama_admin = :nama_admin 
+            $query = "UPDATE '.$this->table.' SET username = :username, nama_admin = :nama_admin 
                     WHERE id_admin = :id_admin";
 
             $this->db->query($query);
@@ -72,7 +72,7 @@ class AdminModel {
             $this->db->bind('username', $data['username']);
             $this->db->bind('nama_admin', $data['nama_admin']);
         } else {
-            $query = "UPDATE m_admin SET username = :username, password = :password, nama_admin = :nama_admin 
+            $query = "UPDATE '.$this->table.' SET username = :username, password = :password, nama_admin = :nama_admin 
                     WHERE id_admin = :id_admin";
 
             $this->db->query($query);
@@ -89,7 +89,7 @@ class AdminModel {
 
     public function delete($id)
     {
-        $query = "DELETE FROM m_admin WHERE id_admin = :id_admin";
+        $query = "DELETE FROM '.$this->table.' WHERE id_admin = :id_admin";
         $this->db->query($query);
         $this->db->bind('id_admin', $id);
 

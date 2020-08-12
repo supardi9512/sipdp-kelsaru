@@ -49,11 +49,22 @@ class Flasher {
         }
     }
 
-    public static function oldData($kolom)
+    public static function oldData($kolom, $selected = '')
     {
         if(isset($_SESSION['old_data_'.$kolom])) {
+            if($selected != '') {
+                return $_SESSION['old_data_'.$kolom]['data'];
+            }
+
             echo $_SESSION['old_data_'.$kolom]['data'];
 
+            unset($_SESSION['old_data_'.$kolom]);
+        }
+    }
+
+    public static function unsetOldData($kolom)
+    {
+        if(isset($_SESSION['old_data_'.$kolom])) {
             unset($_SESSION['old_data_'.$kolom]);
         }
     }

@@ -65,7 +65,7 @@ class RwModel {
 
     public function create($data)
     {
-        $query = "INSERT INTO m_rw VALUES (:id_rw, :username, :password, :no_rw, :nama_rw)";
+        $query = "INSERT INTO '.$this->table.' VALUES (:id_rw, :username, :password, :no_rw, :nama_rw)";
 
         $this->db->query($query);
         $this->db->bind('id_rw', $data['id_rw']);
@@ -82,7 +82,7 @@ class RwModel {
     public function update($data)
     {
         if($data['password'] == '') {
-            $query = "UPDATE m_rw SET username = :username, no_rw = :no_rw, nama_rw = :nama_rw 
+            $query = "UPDATE '.$this->table.' SET username = :username, no_rw = :no_rw, nama_rw = :nama_rw 
                     WHERE id_rw = :id_rw";
 
             $this->db->query($query);
@@ -91,7 +91,7 @@ class RwModel {
             $this->db->bind('no_rw', $data['no_rw']);
             $this->db->bind('nama_rw', $data['nama_rw']);
         } else {
-            $query = "UPDATE m_rw SET username = :username, password = :password, no_rw = :no_rw, nama_rw = :nama_rw 
+            $query = "UPDATE '.$this->table.' SET username = :username, password = :password, no_rw = :no_rw, nama_rw = :nama_rw 
                     WHERE id_rw = :id_rw";
 
             $this->db->query($query);
@@ -109,7 +109,7 @@ class RwModel {
 
     public function delete($id)
     {
-        $query = "DELETE FROM m_rw WHERE id_rw = :id_rw";
+        $query = "DELETE FROM '.$this->table.' WHERE id_rw = :id_rw";
         $this->db->query($query);
         $this->db->bind('id_rw', $id);
 
