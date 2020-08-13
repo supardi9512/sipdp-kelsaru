@@ -21,43 +21,6 @@
     <link rel="stylesheet" href="<?= BASEURL; ?>/public/css/lib/datatable/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="<?= BASEURL; ?>/public/css/lib/chosen/chosen.min.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    <style>
-        #weatherWidget .currentDesc {
-            color: #ffffff!important;
-        }
-        .traffic-chart {
-            min-height: 335px;
-        }
-        #flotPie1  {
-            height: 150px;
-        }
-        #flotPie1 td {
-            padding:3px;
-        }
-        #flotPie1 table {
-            top: 20px!important;
-            right: -10px!important;
-        }
-        .chart-container {
-            display: table;
-            min-width: 270px ;
-            text-align: left;
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-        #flotLine5  {
-             height: 105px;
-        }
-
-        #flotBarChart {
-            height: 150px;
-        }
-        #cellPaiChart{
-            height: 160px;
-        }
-
-    </style>
 </head>
 
 <body>
@@ -76,33 +39,53 @@
                     <li class="<?= ($first_part == "") ? "active" : "noactive"; ?>">
                         <a href="<?= BASEURL; ?>"><i class="menu-icon fa fa-home"></i>Home</a>
                     </li>
-                    <li class="<?= ($first_part == "admin") ? "active" : "noactive"; ?>">
-                        <a href="<?= BASEURL; ?>/admin"> <i class="menu-icon fa fa-user"></i>Admin</a>
-                    </li>
-                    <li class="<?= ($first_part == "rw") ? "active" : "noactive"; ?>">
-                        <a href="<?= BASEURL; ?>/rw"> <i class="menu-icon fa fa-user"></i>Ketua RW</a>
-                    </li>
-                    <li class="<?= ($first_part == "rt") ? "active" : "noactive"; ?>">
-                        <a href="<?= BASEURL; ?>/rt"> <i class="menu-icon fa fa-user"></i>Ketua RT</a>
-                    </li>
-                    <li class="<?= ($first_part == "penduduk") ? "active" : "noactive"; ?>">
-                        <a href="<?= BASEURL; ?>/penduduk"> <i class="menu-icon fa fa-user"></i>Penduduk</a>
-                    </li>
-                    <li class="<?= ($first_part == "penduduktetap") ? "active" : "noactive"; ?>">
-                        <a href="<?= BASEURL; ?>/penduduktetap"> <i class="menu-icon fa fa-users"></i>Penduduk Tetap</a>
-                    </li>
-                    <li class="<?= ($first_part == "penduduklahir") ? "active" : "noactive"; ?>">
-                        <a href="<?= BASEURL; ?>/penduduklahir"> <i class="menu-icon fa fa-users"></i>Penduduk Lahir</a>
-                    </li>
-                    <li class="<?= ($first_part == "pendudukmeninggal") ? "active" : "noactive"; ?>">
-                        <a href="<?= BASEURL; ?>/pendudukmeninggal"> <i class="menu-icon fa fa-users"></i>Penduduk Meninggal</a>
-                    </li>
-                    <li class="<?= ($first_part == "pendudukpindah") ? "active" : "noactive"; ?>">
-                        <a href="<?= BASEURL; ?>/pendudukpindah"> <i class="menu-icon fa fa-users"></i>Penduduk Pindah</a>
-                    </li>
-                    <li class="<?= ($first_part == "pendudukdatang") ? "active" : "noactive"; ?>">
-                        <a href="<?= BASEURL; ?>/pendudukdatang"> <i class="menu-icon fa fa-users"></i>Penduduk Datang</a>
-                    </li>
+                    <?php if($_SESSION['level'] == 'admin') { ?>
+                        <li class="<?= ($first_part == "admin") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/admin"> <i class="menu-icon fa fa-user"></i>Admin</a>
+                        </li>
+                        <li class="<?= ($first_part == "rw") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/rw"> <i class="menu-icon fa fa-user"></i>Ketua RW</a>
+                        </li>
+                        <li class="<?= ($first_part == "rt") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/rt"> <i class="menu-icon fa fa-user"></i>Ketua RT</a>
+                        </li>
+                    <?php } ?>
+                    <?php if($_SESSION['level'] == 'admin' || $_SESSION['level'] == 'rw' || $_SESSION['level'] == 'rt') { ?>
+                        <li class="<?= ($first_part == "penduduk") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/penduduk"> <i class="menu-icon fa fa-user"></i>Penduduk</a>
+                        </li>
+                        <li class="<?= ($first_part == "penduduktetap") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/penduduktetap"> <i class="menu-icon fa fa-users"></i>Penduduk Tetap</a>
+                        </li>
+                        <li class="<?= ($first_part == "penduduklahir") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/penduduklahir"> <i class="menu-icon fa fa-users"></i>Penduduk Lahir</a>
+                        </li>
+                        <li class="<?= ($first_part == "pendudukmeninggal") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/pendudukmeninggal"> <i class="menu-icon fa fa-users"></i>Penduduk Meninggal</a>
+                        </li>
+                        <li class="<?= ($first_part == "pendudukpindah") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/pendudukpindah"> <i class="menu-icon fa fa-users"></i>Penduduk Pindah</a>
+                        </li>
+                        <li class="<?= ($first_part == "pendudukdatang") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/pendudukdatang"> <i class="menu-icon fa fa-users"></i>Penduduk Datang</a>
+                        </li>
+                    <?php } ?>
+                    <?php if($_SESSION['level'] == 'penduduk') { ?>
+                        <li class="<?= ($first_part == "biodata") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/biodata"> <i class="menu-icon fa fa-address-book"></i>Biodata Diri</a>
+                        </li>
+                    <?php } ?>
+                    <?php if($_SESSION['level'] == 'penduduk' || $_SESSION['level'] == 'rw' || $_SESSION['level'] == 'rt') { ?>
+                        <li class="<?= ($first_part == "suratlahir") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/suratlahir"> <i class="menu-icon fa fa-file"></i>Surat Keterangan Lahir</a>
+                        </li>
+                        <li class="<?= ($first_part == "suratkematian") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/suratkematian"> <i class="menu-icon fa fa-file"></i>Surat Keterangan Kematian</a>
+                        </li>
+                        <li class="<?= ($first_part == "suratpindah") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/suratpindah"> <i class="menu-icon fa fa-file"></i>Surat Keterangan Pindah</a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -123,11 +106,11 @@
 
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <button class="btn btn-secondary">Admin</button>
+                            <button class="btn btn-secondary"><?= $_SESSION['nama'].' - '.ucwords($_SESSION['level']); ?></button>
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="<?= BASEURL; ?>/login/logout"><i class="fa fa-power -off"></i>Logout</a>
                         </div>
                     </div>
 

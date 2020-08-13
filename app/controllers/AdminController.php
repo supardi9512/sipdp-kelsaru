@@ -1,6 +1,14 @@
 <?php
 
 class AdminController extends Controller {
+    public function __construct()
+    {
+        if(!isset($_SESSION['is_login'])) {
+            header('Location: '.BASEURL.'/login');
+            exit;
+        }
+    }
+
     public function index()
     {
         $data['title'] = 'Data Admin';
