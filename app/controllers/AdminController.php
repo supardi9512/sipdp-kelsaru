@@ -3,7 +3,7 @@
 class AdminController extends Controller {
     public function __construct()
     {
-        if(!isset($_SESSION['is_login'])) {
+        if(!isset($_SESSION['is_login']) || $_SESSION['level'] != 'admin') {
             header('Location: '.BASEURL.'/login');
             exit;
         }

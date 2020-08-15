@@ -77,13 +77,13 @@
                     <?php } ?>
                     <?php if($_SESSION['level'] == 'penduduk' || $_SESSION['level'] == 'rw' || $_SESSION['level'] == 'rt') { ?>
                         <li class="<?= ($first_part == "suratlahir") ? "active" : "noactive"; ?>">
-                            <a href="<?= BASEURL; ?>/suratlahir"> <i class="menu-icon fa fa-file"></i>Surat Keterangan Lahir</a>
+                            <a href="<?= BASEURL; ?>/suratlahir"> <i class="menu-icon fa fa-file"></i>Surat Ket. Lahir</a>
                         </li>
                         <li class="<?= ($first_part == "suratkematian") ? "active" : "noactive"; ?>">
-                            <a href="<?= BASEURL; ?>/suratkematian"> <i class="menu-icon fa fa-file"></i>Surat Keterangan Kematian</a>
+                            <a href="<?= BASEURL; ?>/suratkematian"> <i class="menu-icon fa fa-file"></i>Surat Ket. Kematian</a>
                         </li>
                         <li class="<?= ($first_part == "suratpindah") ? "active" : "noactive"; ?>">
-                            <a href="<?= BASEURL; ?>/suratpindah"> <i class="menu-icon fa fa-file"></i>Surat Keterangan Pindah</a>
+                            <a href="<?= BASEURL; ?>/suratpindah"> <i class="menu-icon fa fa-file"></i>Surat Ket. Pindah</a>
                         </li>
                     <?php } ?>
                 </ul>
@@ -106,7 +106,7 @@
 
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <button class="btn btn-secondary"><?= $_SESSION['nama'].' - '.ucwords($_SESSION['level']); ?></button>
+                            <button class="btn btn-secondary"><?= strtoupper($_SESSION['nama']).' - '.strtoupper($_SESSION['level']); ?></button>
                         </a>
 
                         <div class="user-menu dropdown-menu">

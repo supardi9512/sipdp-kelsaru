@@ -35,7 +35,9 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#bootstrap-data-table-export').DataTable();
+            $('#data-table').DataTable({
+                lengthChange: false,
+            });
         } );
     </script>
     <script>

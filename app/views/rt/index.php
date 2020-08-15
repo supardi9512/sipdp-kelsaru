@@ -37,7 +37,7 @@
                             <a href="<?= BASEURL; ?>/rt/create" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Add Data</a>
                         </div>
                     </div>
-                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                    <table id="data-table" class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>No.</th>

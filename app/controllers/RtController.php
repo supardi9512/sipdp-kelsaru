@@ -3,7 +3,7 @@
 class RtController extends Controller {
     public function __construct()
     {
-        if(!isset($_SESSION['is_login'])) {
+        if(!isset($_SESSION['is_login']) || $_SESSION['level'] != 'admin') {
             header('Location: '.BASEURL.'/login');
             exit;
         }
@@ -149,11 +149,7 @@ class RtController extends Controller {
         }
 
         if($id_rw == '' || $username == '' || $duplicate_username == TRUE || $no_rt == '' || $duplicate_no_rt == TRUE || $nama_rt == '') {
-            Flasher::setOldData('id_rw', $id_rw);
-            Flasher::setOldData('nama_rt', $nama_rt);
-            Flasher::setOldData('username', $username);
-            Flasher::setOldData('no_rt', $no_rt);
-
+        
             if($id_rw == '') {
                 Flasher::setError('RW wajib dipilih!', 'danger', 'id_rw');
             }

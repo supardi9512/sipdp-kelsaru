@@ -3,7 +3,7 @@
 class RwController extends Controller {
     public function __construct()
     {
-        if(!isset($_SESSION['is_login'])) {
+        if(!isset($_SESSION['is_login']) || $_SESSION['level'] != 'admin') {
             header('Location: '.BASEURL.'/login');
             exit;
         }
@@ -139,10 +139,7 @@ class RwController extends Controller {
         }
 
         if($username == '' || $duplicate_username == TRUE || $no_rw == '' || $duplicate_no_rw == TRUE || $nama_rw == '') {
-            Flasher::setOldData('nama_rw', $nama_rw);
-            Flasher::setOldData('username', $username);
-            Flasher::setOldData('no_rw', $no_rw);
-
+            
             if($username == '') {
                 Flasher::setError('Username wajib diisi!', 'danger', 'username');
             } elseif($duplicate_username == TRUE) {
