@@ -277,4 +277,12 @@ class PendudukController extends Controller {
         header('Location: '.BASEURL.'/penduduk');
         exit;
     }
+
+    public function print()
+    {
+        $data['title'] = 'Data Penduduk';
+        $data['penduduk'] = $this->model('PendudukModel')->getAll();
+
+        $this->view('penduduk/print', $data);
+    }
 }

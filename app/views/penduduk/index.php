@@ -37,7 +37,7 @@
                             <?php if($_SESSION['level'] == 'rt') { ?>
                                 <a href="<?= BASEURL; ?>/penduduk/create" class="btn btn-primary float-right ml-2"><i class="fa fa-plus"></i> Add Data</a>
                             <?php } ?>
-                            <a href="<?= BASEURL; ?>/penduduk/create" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Print</a>
+                            <a href="<?= BASEURL; ?>/penduduk/print" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Print</a>
                         </div>
                     </div>
                     <table id="data-table" class="table table-striped table-bordered nowrap" style="width: 100%;">
