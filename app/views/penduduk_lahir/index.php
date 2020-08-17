@@ -34,20 +34,24 @@
                     </div>
                     <div class="row mb-3 mx-3">
                         <div class="col-md-12 px-0">
-                            <?php if($_SESSION['level'] == 'rt') { ?>
-                                <a href="<?= BASEURL; ?>/penduduktetap/create" class="btn btn-primary float-right ml-2"><i class="fa fa-plus"></i> Add Data</a>
-                            <?php } ?>
-                            <a href="<?= BASEURL; ?>/penduduktetap/print" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Print</a>
+                            <a href="<?= BASEURL; ?>/penduduklahir/print" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Print</a>
                         </div>
                     </div>
                     <table id="data-table" class="table table-striped table-bordered nowrap" style="width: 100%;">
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>No. Tetap</th>
-                                <th>NIK</th>
-                                <th>Nama</th>
-                                <th>Tanggal Menetap</th>
+                                <th>No. Lahir</th>
+                                <th>NIK Pengaju</th>
+                                <th>Nama Pengaju</th>
+                                <th>Nama Bayi</th>
+                                <th>TTL</th>
+                                <th>Hari Lahir</th>
+                                <th>Jam Lahir</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Berat Badan</th>
+                                <th>Nama Ayah</th>
+                                <th>Nama Ibu</th>
                                 <?php if($_SESSION['level'] == 'rt') { ?>
                                     <th>Action</th>
                                 <?php } ?>
@@ -56,29 +60,35 @@
                         <tbody>
                             <?php 
                                 $no = 1; 
-                                foreach($data['penduduk_tetap'] as $penduduk_tetap) : 
+                                foreach($data['penduduk_lahir'] as $penduduk_lahir) : 
 
                                     $bulan = [1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',  
                                                 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
                                     
-                                    $pecahkan = explode('-', $penduduk_tetap['tgl_menetap']);
+                                    $pecahkan = explode('-', $penduduk_lahir['tgl_lahir']);
                                         
                                     if($pecahkan[2] == "0000" || $pecahkan[1] == "00" || $pecahkan[0] == "00") {
-                                        $tgl_menetap = $pecahkan[2] . ' ' . $pecahkan[1] . ' ' . $pecahkan[0];
+                                        $tgl_lahir = $pecahkan[2] . ' ' . $pecahkan[1] . ' ' . $pecahkan[0];
                                     } else {
-                                        $tgl_menetap = $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+                                        $tgl_lahir = $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
                                     }
                             ?>
                                 <tr>
                                     <td><?= $no++; ?></td>
-                                    <td><?= $penduduk_tetap['no_tetap']; ?></td>
-                                    <td><?= $penduduk_tetap['nik']; ?></td>
-                                    <td><?= $penduduk_tetap['nama_penduduk']; ?></td>
-                                    <td><?= $tgl_menetap; ?></td>
+                                    <td><?= $penduduk_lahir['no_lahir']; ?></td>
+                                    <td><?= $penduduk_lahir['nik']; ?></td>
+                                    <td><?= $penduduk_lahir['nama_penduduk']; ?></td>
+                                    <td><?= $penduduk_lahir['nama_bayi']; ?></td>
+                                    <td><?= $penduduk_lahir['tempat_lahir'].', '.$tgl_lahir; ?></td>
+                                    <td><?= $penduduk_lahir['hari_lahir']; ?></td>
+                                    <td><?= $penduduk_lahir['jam_lahir']; ?></td>
+                                    <td><?= $penduduk_lahir['jenis_kelamin']; ?></td>
+                                    <td><?= str_replace('.', ',', $penduduk_lahir['berat_badan']).' Kg'; ?></td>
+                                    <td><?= $penduduk_lahir['nama_ayah']; ?></td>
+                                    <td><?= $penduduk_lahir['nama_ibu']; ?></td>
                                     <?php if($_SESSION['level'] == 'rt') { ?>
                                         <td class="text-center">
-                                            <a href="<?= BASEURL; ?>/penduduktetap/edit/<?= $penduduk_tetap['no_tetap']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Edit</a>
-                                            <a class="btn btn-danger btn-sm" href="#" onclick="sweet_<?= str_replace('-', '', $penduduk_tetap['no_tetap']); ?>()"><i class="fa fa-trash"></i> Delete</a>
+                                            <a class="btn btn-danger btn-sm" href="#" onclick="sweet_<?= str_replace('-', '', $penduduk_lahir['no_lahir']); ?>()"><i class="fa fa-trash"></i> Delete</a>
                                         </td>
                                     <?php } ?>
                                 </tr>
@@ -91,9 +101,9 @@
     </div>
 </div>
 <!-- /.content -->
-<?php foreach($data['penduduk_tetap'] as $penduduk_tetap) { ?>
+<?php foreach($data['penduduk_lahir'] as $penduduk_lahir) { ?>
   <script type="text/javascript">
-    function sweet_<?= str_replace('-', '', $penduduk_tetap['no_tetap']); ?>() {
+    function sweet_<?= str_replace('-', '', $penduduk_lahir['no_lahir']); ?>() {
       swal({
         title: "Anda Yakin Ingin Menghapus Data Ini?",
         text: "Data yang sudah dihapus tidak dapat dikembalikan!",
@@ -103,7 +113,7 @@
       })
       .then((willDelete) => {
         if(willDelete) {
-          swal(window.location.assign("<?= BASEURL; ?>/penduduktetap/delete/<?= $penduduk_tetap['no_tetap'].'/'.$penduduk_tetap['nik']; ?>"), {
+          swal(window.location.assign("<?= BASEURL; ?>/penduduklahir/delete/<?= $penduduk_lahir['no_lahir']; ?>"), {
             icon: "success",
           });
         } else {
