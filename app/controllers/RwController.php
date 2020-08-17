@@ -98,7 +98,12 @@ class RwController extends Controller {
             exit;
         } else {
             $this->model('RwModel')->create($_POST);
+            
             Flasher::setSuccess('Data ketua RW berhasil ditambah.', 'success');
+            Flasher::unsetOldData('nama_rw');
+            Flasher::unsetOldData('username');
+            Flasher::unsetOldData('no_rw');
+
             header('Location: '.BASEURL.'/rw');
             exit;
         }

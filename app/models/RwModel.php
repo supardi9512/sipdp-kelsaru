@@ -65,10 +65,6 @@ class RwModel {
 
     public function create($data)
     {
-        Flasher::unsetOldData('nama_rw');
-        Flasher::unsetOldData('username');
-        Flasher::unsetOldData('no_rw');
-        
         $query = "INSERT INTO ".$this->table." VALUES (:id_rw, :username, :password, :no_rw, :nama_rw)";
 
         $this->db->query($query);

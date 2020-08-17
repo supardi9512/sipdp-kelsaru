@@ -48,9 +48,6 @@ class AdminModel {
 
     public function create($data)
     {
-        Flasher::unsetOldData('nama_admin');
-        Flasher::unsetOldData('username');
-
         $query = "INSERT INTO ".$this->table." VALUES (:id_admin, :username, :password, :nama_admin)";
 
         $this->db->query($query);

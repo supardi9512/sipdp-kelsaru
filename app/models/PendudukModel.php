@@ -65,23 +65,16 @@ class PendudukModel {
         return $this->db->single();
     }
 
+    public function getByIdRt($id_rt)
+    {
+        $this->db->query('SELECT * FROM '.$this->table.' WHERE id_rt=:id_rt');
+        $this->db->bind('id_rt', $id_rt);
+
+        return $this->db->resultSet();
+    }
+
     public function create($data)
     {
-        Flasher::unsetOldData('nik');
-        Flasher::unsetOldData('id_rt_id_rw');
-        Flasher::unsetOldData('username');
-        Flasher::unsetOldData('no_kk');
-        Flasher::unsetOldData('nama_penduduk');
-        Flasher::unsetOldData('tempat_lahir');
-        Flasher::unsetOldData('tgl_lahir');
-        Flasher::unsetOldData('jenis_kelamin');
-        Flasher::unsetOldData('alamat');
-        Flasher::unsetOldData('pekerjaan');
-        Flasher::unsetOldData('pendidikan');
-        Flasher::unsetOldData('agama');
-        Flasher::unsetOldData('status_kawin');
-        Flasher::unsetOldData('status_penduduk');
-        
         $query = "INSERT INTO ".$this->table." VALUES (:nik, :id_rw, :id_rt, :username, :password, :no_kk, :nama_penduduk,
             :tempat_lahir, :tgl_lahir, :jenis_kelamin, :alamat, :kelurahan, :kecamatan, :kota, :provinsi, :pekerjaan,
             :pendidikan, :agama, :status_kawin, :status_penduduk)";
@@ -110,7 +103,7 @@ class PendudukModel {
         $this->db->bind('pendidikan', $data['pendidikan']);
         $this->db->bind('agama', $data['agama']);
         $this->db->bind('status_kawin', $data['status_kawin']);
-        $this->db->bind('status_penduduk', $data['status_penduduk']);
+        $this->db->bind('status_penduduk', NULL);
 
         $this->db->execute();
 
@@ -123,7 +116,7 @@ class PendudukModel {
 
             $query = "UPDATE ".$this->table." SET nik = :nik, username = :username, no_kk = :no_kk, nama_penduduk = :nama_penduduk,
                     tempat_lahir = :tempat_lahir, tgl_lahir = :tgl_lahir, jenis_kelamin = :jenis_kelamin, alamat = :alamat,
-                    pekerjaan = :pekerjaan, pendidikan = :pendidikan, agama = :agama, status_kawin = :status_kawin, status_penduduk = :status_penduduk
+                    pekerjaan = :pekerjaan, pendidikan = :pendidikan, agama = :agama, status_kawin = :status_kawin
                     WHERE nik = :nik_old";
 
             $this->db->query($query);
@@ -140,11 +133,10 @@ class PendudukModel {
             $this->db->bind('pendidikan', $data['pendidikan']);
             $this->db->bind('agama', $data['agama']);
             $this->db->bind('status_kawin', $data['status_kawin']);
-            $this->db->bind('status_penduduk', $data['status_penduduk']);
         } else {
             $query = "UPDATE ".$this->table." SET nik = :nik, username = :username, password = :password, no_kk = :no_kk, nama_penduduk = :nama_penduduk,
                     tempat_lahir = :tempat_lahir, tgl_lahir = :tgl_lahir, jenis_kelamin = :jenis_kelamin, alamat = :alamat,
-                    pekerjaan = :pekerjaan, pendidikan = :pendidikan, agama = :agama, status_kawin = :status_kawin, status_penduduk = :status_penduduk
+                    pekerjaan = :pekerjaan, pendidikan = :pendidikan, agama = :agama, status_kawin = :status_kawin
                     WHERE nik = :nik_old";
 
             $this->db->query($query);
@@ -162,8 +154,20 @@ class PendudukModel {
             $this->db->bind('pendidikan', $data['pendidikan']);
             $this->db->bind('agama', $data['agama']);
             $this->db->bind('status_kawin', $data['status_kawin']);
-            $this->db->bind('status_penduduk', $data['status_penduduk']);
         }
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function updateStatusPenduduk($nik, $status_penduduk)
+    {
+        $query = "UPDATE ".$this->table." SET status_penduduk = :status_penduduk WHERE nik = :nik";
+
+        $this->db->query($query);
+        $this->db->bind('nik', $nik);
+        $this->db->bind('status_penduduk', $status_penduduk);
 
         $this->db->execute();
 

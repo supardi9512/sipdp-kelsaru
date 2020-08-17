@@ -21,6 +21,11 @@ class PendudukController extends Controller {
 
     public function create()
     {
+        if($_SESSION['level'] != 'rt') {
+            header('Location: '.BASEURL);
+            exit;
+        }
+
         $data['title'] = 'Tambah Data Penduduk';
         
         $data['rt'] = $this->model('RtModel')->getById($_SESSION['id']);
@@ -32,6 +37,11 @@ class PendudukController extends Controller {
 
     public function store()
     {
+        if($_SESSION['level'] != 'rt') {
+            header('Location: '.BASEURL);
+            exit;
+        }
+
         $nik = $_POST['nik'];
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -45,7 +55,6 @@ class PendudukController extends Controller {
         $pendidikan = $_POST['pendidikan'];
         $agama = $_POST['agama'];
         $status_kawin = $_POST['status_kawin'];
-        $status_penduduk = $_POST['status_penduduk'];
 
         $data['penduduk_by_nik'] = $this->model('PendudukModel')->getByNik($nik);
         $data['penduduk_by_username'] = $this->model('PendudukModel')->getByUsername($username);
@@ -64,7 +73,7 @@ class PendudukController extends Controller {
 
         if($nik == '' || $duplicate_nik == TRUE || $username == '' || $duplicate_username == TRUE || 
             $password == '' || $no_kk == '' || $nama_penduduk == '' || $tempat_lahir == '' || $tgl_lahir == '' || $jenis_kelamin == '' || 
-            $alamat == '' || $pekerjaan == '' || $pendidikan == '' || $agama == '' || $status_kawin == '' || $status_penduduk == '') {
+            $alamat == '' || $pekerjaan == '' || $pendidikan == '' || $agama == '' || $status_kawin == '') {
 
             Flasher::setOldData('nik', $nik);
             Flasher::setOldData('username', $username);
@@ -78,7 +87,6 @@ class PendudukController extends Controller {
             Flasher::setOldData('pendidikan', $pendidikan);
             Flasher::setOldData('agama', $agama);
             Flasher::setOldData('status_kawin', $status_kawin);
-            Flasher::setOldData('status_penduduk', $status_penduduk);
 
             if($nik == '') {
                 Flasher::setError('NIK wajib diisi!', 'danger', 'nik');
@@ -136,15 +144,26 @@ class PendudukController extends Controller {
                 Flasher::setError('Status kawin wajib dipilih!', 'danger', 'status_kawin');
             }
 
-            if($status_penduduk == '') {
-                Flasher::setError('Status penduduk wajib dipilih!', 'danger', 'status_penduduk');
-            }
-
             header('Location: '.BASEURL.'/penduduk/create');
             exit;
         } else {
             $this->model('PendudukModel')->create($_POST);
+
             Flasher::setSuccess('Data penduduk berhasil ditambah.', 'success');
+            Flasher::unsetOldData('nik');
+            Flasher::unsetOldData('id_rt_id_rw');
+            Flasher::unsetOldData('username');
+            Flasher::unsetOldData('no_kk');
+            Flasher::unsetOldData('nama_penduduk');
+            Flasher::unsetOldData('tempat_lahir');
+            Flasher::unsetOldData('tgl_lahir');
+            Flasher::unsetOldData('jenis_kelamin');
+            Flasher::unsetOldData('alamat');
+            Flasher::unsetOldData('pekerjaan');
+            Flasher::unsetOldData('pendidikan');
+            Flasher::unsetOldData('agama');
+            Flasher::unsetOldData('status_kawin');
+            
             header('Location: '.BASEURL.'/penduduk');
             exit;
         }
@@ -152,6 +171,11 @@ class PendudukController extends Controller {
 
     public function edit($nik)
     {
+        if($_SESSION['level'] != 'rt') {
+            header('Location: '.BASEURL);
+            exit;
+        }
+
         $data['title'] = 'Edit Data Penduduk';
         
         $data['penduduk'] = $this->model('PendudukModel')->getByNik($nik);
@@ -164,6 +188,11 @@ class PendudukController extends Controller {
 
     public function update()
     {
+        if($_SESSION['level'] != 'rt') {
+            header('Location: '.BASEURL);
+            exit;
+        }
+
         $nik_old = $_POST['nik_old'];
         $nik = $_POST['nik'];
         $username = $_POST['username'];
@@ -178,7 +207,6 @@ class PendudukController extends Controller {
         $pendidikan = $_POST['pendidikan'];
         $agama = $_POST['agama'];
         $status_kawin = $_POST['status_kawin'];
-        $status_penduduk = $_POST['status_penduduk'];
         
         if($nik != $nik_old) {
             $data['penduduk_by_nik'] = $this->model('PendudukModel')->getByNik($nik);
@@ -202,7 +230,7 @@ class PendudukController extends Controller {
 
         if($nik == '' || $duplicate_nik == TRUE || $username == '' || $duplicate_username == TRUE || 
             $no_kk == '' || $nama_penduduk == '' || $tempat_lahir == '' || $tgl_lahir == '' || $jenis_kelamin == '' || 
-            $alamat == '' || $pekerjaan == '' || $pendidikan == '' || $agama == '' || $status_kawin == '' || $status_penduduk == '') {
+            $alamat == '' || $pekerjaan == '' || $pendidikan == '' || $agama == '' || $status_kawin == '') {
 
             if($nik == '') {
                 Flasher::setError('NIK wajib diisi!', 'danger', 'nik');
@@ -256,10 +284,6 @@ class PendudukController extends Controller {
                 Flasher::setError('Status kawin wajib dipilih!', 'danger', 'status_kawin');
             }
 
-            if($status_penduduk == '') {
-                Flasher::setError('Status penduduk wajib dipilih!', 'danger', 'status_penduduk');
-            }
-
             header('Location: '.BASEURL.'/penduduk/edit/'.$nik_old);
             exit;
         } else {
@@ -272,6 +296,11 @@ class PendudukController extends Controller {
 
     public function delete($nik)
     {
+        if($_SESSION['level'] != 'rt') {
+            header('Location: '.BASEURL);
+            exit;
+        }
+
         $this->model('PendudukModel')->delete($nik);
         Flasher::setSuccess('Data penduduk berhasil dihapus.', 'success');
         header('Location: '.BASEURL.'/penduduk');

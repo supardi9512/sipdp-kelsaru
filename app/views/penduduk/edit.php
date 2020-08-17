@@ -156,17 +156,6 @@
                                         <option value="Sudah Kawin" <?= ($data['penduduk']['status_kawin'] == 'Sudah Kawin' ? 'selected' : ''); ?>>Sudah Kawin</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="statusPenduduk" class="form-control-label">Status Penduduk</label>
-                                    <?php Flasher::error('status_penduduk'); ?>
-                                    <select data-placeholder="Pilih Status Penduduk" id="statusPenduduk" name="status_penduduk" class="standardSelect" tabindex="1">
-                                        <option value="" label="default"></option>
-                                        <option value="Tetap" <?= ($data['penduduk']['status_penduduk'] == 'Tetap' ? 'selected' : ''); ?>>Tetap</option>
-                                        <option value="Pendatang" <?= ($data['penduduk']['status_penduduk'] == 'Pendatang' ? 'selected' : ''); ?>>Pendatang</option>
-                                        <option value="Pindah" <?= ($data['penduduk']['status_penduduk'] == 'Pindah' ? 'selected' : ''); ?>>Pindah</option>
-                                        <option value="Meninggal" <?= ($data['penduduk']['status_penduduk'] == 'Meninggal' ? 'selected' : ''); ?>>Meninggal</option>
-                                    </select>
-                                </div>
                             </div>
                         </div>
                         <div class="form-actions form-group float-right">

@@ -165,19 +165,6 @@
                                     </select>
                                     <?php Flasher::unsetOldData('status_kawin'); ?>
                                 </div>
-                                <div class="form-group">
-                                    <label for="statusPenduduk" class="form-control-label">Status Penduduk</label>
-                                    <?php Flasher::error('status_penduduk'); ?>
-                                    <?php $old_status_penduduk = Flasher::oldData('status_penduduk', 'selected'); ?>
-                                    <select data-placeholder="Pilih Status Penduduk" id="statusPenduduk" name="status_penduduk" class="standardSelect" tabindex="1">
-                                        <option value="" label="default"></option>
-                                        <option value="Tetap" <?= (!empty($old_status_penduduk) && $old_status_penduduk == 'Tetap' ? 'selected' : ''); ?>>Tetap</option>
-                                        <option value="Pendatang" <?= (!empty($old_status_penduduk) && $old_status_penduduk == 'Pendatang' ? 'selected' : ''); ?>>Pendatang</option>
-                                        <option value="Pindah" <?= (!empty($old_status_penduduk) && $old_status_penduduk == 'Pindah' ? 'selected' : ''); ?>>Pindah</option>
-                                        <option value="Meninggal" <?= (!empty($old_status_penduduk) && $old_status_penduduk == 'Meninggal' ? 'selected' : ''); ?>>Meninggal</option>
-                                    </select>
-                                    <?php Flasher::unsetOldData('status_penduduk'); ?>
-                                </div>
                             </div>
                         </div>
                         <div class="form-actions form-group float-right">

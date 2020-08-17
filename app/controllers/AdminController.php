@@ -83,7 +83,11 @@ class AdminController extends Controller {
             exit;
         } else {
             $this->model('AdminModel')->create($_POST);
+
             Flasher::setSuccess('Data admin berhasil ditambah.', 'success');
+            Flasher::unsetOldData('nama_admin');
+            Flasher::unsetOldData('username');
+            
             header('Location: '.BASEURL.'/admin');
             exit;
         }

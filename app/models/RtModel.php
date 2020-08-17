@@ -72,11 +72,6 @@ class RtModel {
 
     public function create($data)
     {
-        Flasher::unsetOldData('id_rw');
-        Flasher::unsetOldData('nama_rt');
-        Flasher::unsetOldData('username');
-        Flasher::unsetOldData('no_rt');
-
         $query = "INSERT INTO ".$this->table." VALUES (:id_rt, :id_rw, :username, :password, :no_rt, :nama_rt)";
 
         $this->db->query($query);

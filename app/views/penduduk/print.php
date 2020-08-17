@@ -57,7 +57,7 @@
                     $pecahkan = explode('-', $penduduk['tgl_lahir']);
                         
                     if($pecahkan[2] == "0000" || $pecahkan[1] == "00" || $pecahkan[0] == "00") {
-                        $tgl_lahir = $pecahkan[2] . ' ' . $pecahkan[1] . ' ' . $pecahkan[0] . ' ' . $jam;
+                        $tgl_lahir = $pecahkan[2] . ' ' . $pecahkan[1] . ' ' . $pecahkan[0];
                     } else {
                         $tgl_lahir = $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
                     }
@@ -75,7 +75,7 @@
                     <td><?= $penduduk['pendidikan']; ?></td>
                     <td><?= $penduduk['agama']; ?></td>
                     <td><?= $penduduk['status_kawin']; ?></td>
-                    <td><?= $penduduk['status_penduduk']; ?></td>
+                    <td><?= !empty($penduduk['status_penduduk']) ? $penduduk['status_penduduk'] : '-'; ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

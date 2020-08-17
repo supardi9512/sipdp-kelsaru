@@ -105,7 +105,13 @@ class RtController extends Controller {
             exit;
         } else {
             $this->model('RtModel')->create($_POST);
+
             Flasher::setSuccess('Data ketua RT berhasil ditambah.', 'success');
+            Flasher::unsetOldData('id_rw');
+            Flasher::unsetOldData('nama_rt');
+            Flasher::unsetOldData('username');
+            Flasher::unsetOldData('no_rt');
+            
             header('Location: '.BASEURL.'/rt');
             exit;
         }
