@@ -69,7 +69,7 @@
                     <td><?= $penduduk_lahir['nama_bayi']; ?></td>
                     <td><?= $penduduk_lahir['tempat_lahir'].', '.$tgl_lahir; ?></td>
                     <td><?= $penduduk_lahir['hari_lahir']; ?></td>
-                    <td><?= $penduduk_lahir['jam_lahir']; ?></td>
+                    <td><?= date('H:i', strtotime($penduduk_lahir['jam_lahir'])); ?> WIB</td>
                     <td><?= $penduduk_lahir['jenis_kelamin']; ?></td>
                     <td><?= str_replace('.', ',', $penduduk_lahir['berat_badan']).' Kg'; ?></td>
                     <td><?= $penduduk_lahir['nama_ayah']; ?></td>

@@ -76,14 +76,14 @@
                         </li>
                     <?php } ?>
                     <?php if($_SESSION['level'] == 'penduduk' || $_SESSION['level'] == 'rw' || $_SESSION['level'] == 'rt') { ?>
-                        <li class="<?= ($first_part == "suratlahir") ? "active" : "noactive"; ?>">
-                            <a href="<?= BASEURL; ?>/suratlahir"> <i class="menu-icon fa fa-file"></i>Surat Ket. Lahir</a>
+                        <li class="<?= ($first_part == "ketlahir") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/ketlahir"> <i class="menu-icon fa fa-file"></i>Surat Ket. Lahir</a>
                         </li>
-                        <li class="<?= ($first_part == "suratkematian") ? "active" : "noactive"; ?>">
-                            <a href="<?= BASEURL; ?>/suratkematian"> <i class="menu-icon fa fa-file"></i>Surat Ket. Kematian</a>
+                        <li class="<?= ($first_part == "ketkematian") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/ketkematian"> <i class="menu-icon fa fa-file"></i>Surat Ket. Kematian</a>
                         </li>
-                        <li class="<?= ($first_part == "suratpindah") ? "active" : "noactive"; ?>">
-                            <a href="<?= BASEURL; ?>/suratpindah"> <i class="menu-icon fa fa-file"></i>Surat Ket. Pindah</a>
+                        <li class="<?= ($first_part == "ketpindah") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/ketpindah"> <i class="menu-icon fa fa-file"></i>Surat Ket. Pindah</a>
                         </li>
                     <?php } ?>
                 </ul>
