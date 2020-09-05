@@ -19,7 +19,7 @@ class PendudukmeninggalController extends Controller {
         $this->view('templates/footer');
     }
 
-    public function delete($no)
+    public function delete($no, $nik)
     {
         if($_SESSION['level'] != 'rt') {
             header('Location: '.BASEURL);

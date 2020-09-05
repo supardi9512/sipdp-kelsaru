@@ -100,7 +100,6 @@ class KetkematianController extends Controller {
             exit;
         } else {
             $this->model('KetkematianModel')->create($_POST);
-            $this->model('PendudukModel')->updateStatusPenduduk($nik, 'Meninggal');
 
             Flasher::setSuccess('Data surat keterangan kematian berhasil ditambah.', 'success');
             Flasher::unsetOldData('umur');
@@ -183,6 +182,11 @@ class KetkematianController extends Controller {
     public function validasi($no)
     {
         $this->model('KetkematianModel')->updateValidasi($no, 'Sudah Validasi');
+
+        if($_SESSION['level'] == 'rw') {
+            $this->model('PendudukModel')->updateStatusPenduduk($nik, 'Meninggal');
+        }
+
         Flasher::setSuccess('Data surat keterangan kematian berhasil divalidasi.', 'success');
             
         header('Location: '.BASEURL.'/ketkematian');

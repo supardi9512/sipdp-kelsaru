@@ -36,7 +36,7 @@
                                     <input type="text" id="noMeninggal" name="no_meninggal" class="form-control form-control-sm" value="<?= $data['no_meninggal_max']; ?>" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nik" class="form-control-label">Penduduk</label>
+                                    <label for="nik" class="form-control-label">NIK</label>
                                     <input type="text" id="nik" name="nik" class="form-control form-control-sm" value="<?= $_SESSION['id']; ?>" readonly>
                                 </div>
                                 <div class="form-group">
