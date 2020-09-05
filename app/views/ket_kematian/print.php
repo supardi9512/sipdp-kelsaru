@@ -56,7 +56,7 @@
             margin-top: 0;
             margin-bottom: 0;
             border: 1px solid #000;
-            width: 270px;
+            width: 310px;
         }
 
         /* .section-body table td {
@@ -78,98 +78,98 @@
     </header>
     <br><hr class="line-top-header"><hr class="line-bottom-header"><br>
     <section class="section-title">
-        <h3>SURAT KETERANGAN LAHIR</h3>
+        <h3>SURAT KETERANGAN KEMATIAN</h3>
         <hr class="line-title">
-        <p style="text-align: center; margin-top: 0;">Nomor: <?= $data['ket_lahir']['no_lahir']; ?></p>
+        <p style="text-align: center; margin-top: 0;">Nomor: <?= $data['ket_kematian']['no_meninggal']; ?></p>
     </section>
     <br>
     <section class="section-body">
-        <p>Yang bertanda tangan di bawah ini Ketua Rukun Tetangga (RT) <?= sprintf("%03s", $data['ket_lahir']['no_rt']); ?> 
-        Rukun Warga (RW) <?= sprintf("%03s", $data['ket_lahir']['no_rw']); ?>, menerangkan bahwa pada :</p>
+        <p>Yang bertanda tangan di bawah ini Ketua Rukun Tetangga (RT) <?= sprintf("%03s", $data['ket_kematian']['no_rt']); ?> 
+        Rukun Warga (RW) <?= sprintf("%03s", $data['ket_kematian']['no_rw']); ?>, menerangkan bahwa :</p>
         <table style="margin-left: 70px;">
             <tr>
-                <td style="width: 57%;">Hari</td>
+                <td style="width: 35%;">Nama Lengkap</td>
                 <td>:</td>
-                <td><?= $data['ket_lahir']['hari_lahir']; ?></td>
-            </tr>
-            <tr>
-                <?php
-                    $bulan = [1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',  
-                                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-                    
-                    $pecahkan = explode('-', $data['ket_lahir']['tgl_lahir']);
-                        
-                    $tgl_lahir = $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
-                ?>
-                <td>Tanggal</td>
-                <td>:</td>
-                <td><?= $tgl_lahir; ?></td>
-            </tr>
-            <tr>
-                <td>Pukul</td>
-                <td>:</td>
-                <td><?= date('H:i', strtotime($data['ket_lahir']['jam_lahir'])); ?> WIB</td>
-            </tr>
-            <tr>
-                <td>Tempat Lahir</td>
-                <td>:</td>
-                <td><?= $data['ket_lahir']['tempat_lahir']; ?></td>
-            </tr>
-        </table>
-        <p>Telah lahir anak <?= ($data['ket_lahir']['jenis_kelamin'] == 'Laki-laki') ? 'laki-laki / <del>perempuan</del>' : '<del>laki-laki</del> / perempuan'; ?> yang bernama :</p>
-        <table style="margin-left: 70px;">
-            <tr>
-                <td style="width: 65%;">Nama Lengkap</td>
-                <td>:</td>
-                <td><?= $data['ket_lahir']['nama_bayi']; ?></td>
-            </tr>
-            <tr>
-                <td>Berat Badan</td>
-                <td>:</td>
-                <td><?= str_replace('.', ',', $data['ket_lahir']['berat_badan']).' Kg'; ?></td>
-            </tr>
-            <tr>
-                <td>Nama Ibu Kandung</td>
-                <td>:</td>
-                <td><?= $data['ket_lahir']['nama_ibu']; ?></td>
-            </tr>
-            <tr>
-                <td>Nama Ayah Kandung</td>
-                <td>:</td>
-                <td><?= $data['ket_lahir']['nama_ayah']; ?></td>
-            </tr>
-        </table>
-        <p>Surat keterangan ini dibuat berdasarkan keterangan pelapor :</p>
-        <table style="margin-left: 70px;">
-            <tr>
-                <td style="width: 27%;">Nama Lengkap</td>
-                <td>:</td>
-                <td><?= $data['ket_lahir']['nama_penduduk']; ?></td>
+                <td><?= $data['ket_kematian']['nama_penduduk']; ?></td>
             </tr>
             <tr>
                 <td>NIK</td>
                 <td>:</td>
-                <td><?= $data['ket_lahir']['nik']; ?></td>
+                <td><?= $data['ket_kematian']['nik']; ?></td>
+            </tr>
+            <tr>
+                <?php
+                    $bulan = [1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',  
+                                    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        
+                    $pecahkan = explode('-', $data['ket_kematian']['tgl_lahir']);
+                        
+                    $tgl_lahir = $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+                ?>
+                <td>Tempat & Tanggal Lahir</td>
+                <td>:</td>
+                <td><?= $data['ket_kematian']['tempat_lahir'].', '.$tgl_lahir; ?></td>
+            </tr>
+            <tr>
+                <td>Umur</td>
+                <td>:</td>
+                <td><?= $data['ket_kematian']['umur']; ?> Tahun</td>
+            </tr>
+            <tr>
+                <td>Jenis Kelamin</td>
+                <td>:</td>
+                <td><?= $data['ket_kematian']['jenis_kelamin']; ?></td>
+            </tr>
+            <tr>
+                <td>Agama</td>
+                <td>:</td>
+                <td><?= $data['ket_kematian']['agama']; ?></td>
+            </tr>
+            <tr>
+                <td>Pekerjaan Terakhir</td>
+                <td>:</td>
+                <td><?= $data['ket_kematian']['pekerjaan']; ?></td>
             </tr>
             <tr>
                 <td style="vertical-align: top;">Alamat</td>
                 <td style="vertical-align: top;">:</td>
-                <td style="vertical-align: top;"><?= $data['ket_lahir']['alamat'].' RT. '.sprintf("%03s", $data['ket_lahir']['no_rt']).' RW. '.sprintf("%03s", $data['ket_lahir']['no_rw']).' Kel. '.$data['ket_lahir']['kelurahan'].', <br>Kec. '.$data['ket_lahir']['kecamatan'].', Kota '.$data['ket_lahir']['kota']; ?></td>
-            </tr>
-            <tr>
-                <td>Pekerjaan</td>
-                <td>:</td>
-                <td><?= $data['ket_lahir']['pekerjaan']; ?></td>
+                <td style="vertical-align: top;"><?= $data['ket_kematian']['alamat'].' RT. '.sprintf("%03s", $data['ket_kematian']['no_rt']).' RW. '.sprintf("%03s", $data['ket_kematian']['no_rw']).' Kel. '.$data['ket_kematian']['kelurahan'].', <br>Kec. '.$data['ket_kematian']['kecamatan'].', Kota '.$data['ket_kematian']['kota']; ?></td>
             </tr>
         </table>
-        <p>Demikian surat keterangan lahir ini dibuat dengan sebenar-benarnya dan untuk dapat dipergunakan seperlunya.</p>
+        <p>Menurut sepengetahuan kami bahwa nama tersebut di atas telah meninggal dunia pada :</p>
+        <table style="margin-left: 70px;">
+            <tr>
+                <td style="width: 50%;">Hari</td>
+                <td>:</td>
+                <td><?= $data['ket_kematian']['hari_kematian']; ?></td>
+            </tr>
+            <tr>
+                <?php
+                    $bulan = [1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',  
+                                    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        
+                    $pecahkan = explode('-', $data['ket_kematian']['tgl_kematian']);
+                        
+                    $tgl_kematian = $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+                ?>
+                <td>Tempat & Tanggal</td>
+                <td>:</td>
+                <td><?= $data['ket_kematian']['tempat_kematian'].', '.$tgl_kematian; ?></td>
+            </tr>
+            <tr>
+                <td>Penyebab</td>
+                <td>:</td>
+                <td><?= $data['ket_kematian']['penyebab_kematian']; ?></td>
+            </tr>
+        </table>
+        <p>Demikian surat keterangan kematian ini dibuat dengan sebenar-benarnya dan untuk dapat dipergunakan seperlunya.</p>
     </section>
     <footer>
         <div class="footer-ttd-rw">
             <p>Mengetahui,
-            <br>Ketua RW. <?= sprintf("%03s", $data['ket_lahir']['no_rw']); ?></p>
+            <br>Ketua RW. <?= sprintf("%03s", $data['ket_kematian']['no_rw']); ?></p>
             <br><br><br>
-            <p>( <?= $data['ket_lahir']['nama_rw']; ?> )</p>
+            <p>( <?= $data['ket_kematian']['nama_rw']; ?> )</p>
         </div>
         <div class="footer-ttd-rt">
             <?php
@@ -180,10 +180,10 @@
                     
                 $tgl_sekarang = $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
             ?>
-            <p><?= $data['ket_lahir']['kota'].', '.$tgl_sekarang; ?>
-            <br>Ketua RT. <?= sprintf("%03s", $data['ket_lahir']['no_rt']); ?> RW. <?= sprintf("%03s", $data['ket_lahir']['no_rw']); ?></p>
+            <p><?= $data['ket_kematian']['kota'].', '.$tgl_sekarang; ?>
+            <br>Ketua RT. <?= sprintf("%03s", $data['ket_kematian']['no_rt']); ?> RW. <?= sprintf("%03s", $data['ket_kematian']['no_rw']); ?></p>
             <br><br><br>
-            <p>( <?= $data['ket_lahir']['nama_rt']; ?> )</p>
+            <p>( <?= $data['ket_kematian']['nama_rt']; ?> )</p>
         </div>
     </footer>
 	<script>

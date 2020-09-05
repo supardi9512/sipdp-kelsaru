@@ -29,7 +29,7 @@ class PendudukdatangController extends Controller {
         $data['title'] = 'Tambah Data Penduduk Datang';
         
         $data['penduduk_datang_max'] = $this->model('PendudukdatangModel')->getMaxNo();
-        $data['penduduk_by_id_rt'] = $this->model('PendudukModel')->getByIdRt($_SESSION['id'], 'Pendatang');
+        $data['penduduk_by_id_rt'] = $this->model('PendudukModel')->getByIdRt($_SESSION['id']);
         
         $no_datang = $data['penduduk_datang_max']['no_datang_terbesar'];
 
@@ -147,7 +147,7 @@ class PendudukdatangController extends Controller {
         $data['title'] = 'Edit Data Penduduk Datang';
         
         $data['penduduk_datang'] = $this->model('PendudukdatangModel')->getByNo($no);
-        $data['penduduk_by_id_rt'] = $this->model('PendudukModel')->getByIdRt($_SESSION['id'], 'Pendatang');
+        $data['penduduk_by_id_rt'] = $this->model('PendudukModel')->getByIdRt($_SESSION['id']);
 
         $this->view('templates/header', $data);
         $this->view('penduduk_datang/edit', $data);

@@ -65,21 +65,10 @@ class PendudukModel {
         return $this->db->single();
     }
 
-    public function getByIdRt($id_rt, $status_penduduk)
+    public function getByIdRt($id_rt)
     {
-        if($status_penduduk == 'Tetap') {
-            $this->db->query('SELECT * FROM '.$this->table.' WHERE id_rt=:id_rt AND (status_penduduk IS NULL OR status_penduduk NOT IN ("Meninggal", "Pindah"))');
-            $this->db->bind('id_rt', $id_rt);
-        } elseif($status_penduduk == 'Pendatang') {
-            $this->db->query('SELECT * FROM '.$this->table.' WHERE id_rt=:id_rt AND (status_penduduk IS NULL OR status_penduduk NOT IN ("Tetap", "Meninggal", "Pindah"))');
-            $this->db->bind('id_rt', $id_rt);
-        } elseif($status_penduduk == 'Pindah') {
-            $this->db->query('SELECT * FROM '.$this->table.' WHERE id_rt=:id_rt AND (status_penduduk IS NULL OR status_penduduk NOT IN ("Meninggal"))');
-            $this->db->bind('id_rt', $id_rt);
-        } else {
-            $this->db->query('SELECT * FROM '.$this->table.' WHERE id_rt=:id_rt');
-            $this->db->bind('id_rt', $id_rt);
-        }
+        $this->db->query('SELECT * FROM '.$this->table.' WHERE id_rt=:id_rt');
+        $this->db->bind('id_rt', $id_rt);
 
         return $this->db->resultSet();
     }
