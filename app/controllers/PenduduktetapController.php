@@ -29,7 +29,7 @@ class PenduduktetapController extends Controller {
         $data['title'] = 'Tambah Data Penduduk Tetap';
         
         $data['penduduk_tetap_max'] = $this->model('PenduduktetapModel')->getMaxNo();
-        $data['penduduk_by_id_rt'] = $this->model('PendudukModel')->getByIdRt($_SESSION['id']);
+        $data['penduduk_by_id_rt'] = $this->model('PendudukModel')->getByIdRt($_SESSION['id'], 'Tetap');
         
         $no_tetap = $data['penduduk_tetap_max']['no_tetap_terbesar'];
 
@@ -110,7 +110,7 @@ class PenduduktetapController extends Controller {
         $data['title'] = 'Edit Data Penduduk Tetap';
         
         $data['penduduk_tetap'] = $this->model('PenduduktetapModel')->getByNo($no);
-        $data['penduduk_by_id_rt'] = $this->model('PendudukModel')->getByIdRt($_SESSION['id']);
+        $data['penduduk_by_id_rt'] = $this->model('PendudukModel')->getByIdRt($_SESSION['id'], 'Tetap');
 
         $this->view('templates/header', $data);
         $this->view('penduduk_tetap/edit', $data);

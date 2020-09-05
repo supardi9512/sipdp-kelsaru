@@ -70,11 +70,11 @@
                             <a href="<?= BASEURL; ?>/pendudukdatang"> <i class="menu-icon fa fa-users"></i>Penduduk Datang</a>
                         </li>
                     <?php } ?>
-                    <?php if($_SESSION['level'] == 'penduduk') { ?>
+                    <!-- <?php if($_SESSION['level'] == 'penduduk') { ?>
                         <li class="<?= ($first_part == "biodata") ? "active" : "noactive"; ?>">
                             <a href="<?= BASEURL; ?>/biodata"> <i class="menu-icon fa fa-address-book"></i>Biodata Diri</a>
                         </li>
-                    <?php } ?>
+                    <?php } ?> -->
                     <?php if($_SESSION['level'] == 'penduduk' || $_SESSION['level'] == 'rw' || $_SESSION['level'] == 'rt') { ?>
                         <li class="<?= ($first_part == "ketlahir") ? "active" : "noactive"; ?>">
                             <a href="<?= BASEURL; ?>/ketlahir"> <i class="menu-icon fa fa-file"></i>Surat Ket. Lahir</a>

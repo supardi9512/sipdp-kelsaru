@@ -13,7 +13,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="<?= BASEURL; ?>">Home</a></li>
-                            <li><a href="<?= BASEURL; ?>/penduduk">Data Penduduk Tetap</a></li>
+                            <li><a href="<?= BASEURL; ?>/penduduktetap">Data Penduduk Tetap</a></li>
                             <li class="active"><?= $data['title']; ?></li>
                         </ol>
                     </div>

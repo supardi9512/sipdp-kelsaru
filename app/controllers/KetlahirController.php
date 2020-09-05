@@ -125,15 +125,15 @@ class KetlahirController extends Controller {
             $this->model('KetlahirModel')->create($_POST);
 
             Flasher::setSuccess('Data surat keterangan lahir berhasil ditambah.', 'success');
-            Flasher::unsetOldData('nama_bayi', $nama_bayi);
-            Flasher::unsetOldData('hari_lahir', $hari_lahir);
-            Flasher::unsetOldData('jam_lahir', $jam_lahir);
-            Flasher::unsetOldData('tgl_lahir', $tgl_lahir);
-            Flasher::unsetOldData('tempat_lahir', $tempat_lahir);
-            Flasher::unsetOldData('jenis_kelamin', $jenis_kelamin);
-            Flasher::unsetOldData('berat_badan', $berat_badan);
-            Flasher::unsetOldData('nama_ayah', $nama_ayah);
-            Flasher::unsetOldData('nama_ibu', $nama_ibu);
+            Flasher::unsetOldData('nama_bayi');
+            Flasher::unsetOldData('hari_lahir');
+            Flasher::unsetOldData('jam_lahir');
+            Flasher::unsetOldData('tgl_lahir');
+            Flasher::unsetOldData('tempat_lahir');
+            Flasher::unsetOldData('jenis_kelamin');
+            Flasher::unsetOldData('berat_badan');
+            Flasher::unsetOldData('nama_ayah');
+            Flasher::unsetOldData('nama_ibu');
 
             header('Location: '.BASEURL.'/ketlahir');
             exit;
