@@ -115,7 +115,7 @@
       })
       .then((willDelete) => {
         if(willDelete) {
-          swal(window.location.assign("<?= BASEURL; ?>/ketpindah/validasi/<?= $ket_pindah['no_pindah']; ?>"), {
+          swal(window.location.assign("<?= BASEURL; ?>/ketpindah/validasi/<?= $ket_pindah['no_pindah'].'/'.$ket_pindah['nik']; ?>"), {
             icon: "success",
           });
         } else {

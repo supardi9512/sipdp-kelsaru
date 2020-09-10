@@ -140,7 +140,7 @@ class KetpindahController extends Controller {
         }
     }
 
-    public function validasi($no)
+    public function validasi($no, $nik)
     {
         $this->model('KetpindahModel')->updateValidasi($no, 'Sudah Validasi');
 

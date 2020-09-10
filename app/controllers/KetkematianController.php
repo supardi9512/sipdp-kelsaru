@@ -179,7 +179,7 @@ class KetkematianController extends Controller {
         }
     }
 
-    public function validasi($no)
+    public function validasi($no, $nik)
     {
         $this->model('KetkematianModel')->updateValidasi($no, 'Sudah Validasi');
 

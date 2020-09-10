@@ -119,7 +119,7 @@
       })
       .then((willDelete) => {
         if(willDelete) {
-          swal(window.location.assign("<?= BASEURL; ?>/ketkematian/validasi/<?= $ket_kematian['no_meninggal']; ?>"), {
+          swal(window.location.assign("<?= BASEURL; ?>/ketkematian/validasi/<?= $ket_kematian['no_meninggal'].'/'.$ket_kematian['nik']; ?>"), {
             icon: "success",
           });
         } else {
