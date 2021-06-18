@@ -57,6 +57,7 @@
                                 <th>Agama</th>
                                 <th>Status Kawin</th>
                                 <th>Status Penduduk</th>
+                                <th>Anggota KK</th>
                                 <?php if($_SESSION['level'] == 'rt') { ?>
                                     <th>Action</th>
                                 <?php } ?>
@@ -83,7 +84,7 @@
                                     <td><?= $penduduk['nik']; ?></td>
                                     <td><?= $penduduk['nama_penduduk']; ?></td>
                                     <td><?= $penduduk['username']; ?></td>
-                                    <td><?= $penduduk['no_kk']; ?></td>
+                                    <td><?= !empty($penduduk['no_kk']) ? $penduduk['no_kk'] : '-'; ?></td>
                                     <td><?= $penduduk['tempat_lahir'].', '.$tgl_lahir; ?></td>
                                     <td><?= $penduduk['jenis_kelamin']; ?></td>
                                     <td><?= $penduduk['alamat'].' RT. '.sprintf("%03s", $penduduk['no_rt']).' RW. '.sprintf("%03s", $penduduk['no_rw']).' Kel. '.$penduduk['kelurahan'].', Kec. '.$penduduk['kecamatan']; ?></td>
@@ -93,6 +94,11 @@
                                     <td><?= $penduduk['agama']; ?></td>
                                     <td><?= $penduduk['status_kawin']; ?></td>
                                     <td><?= !empty($penduduk['status_penduduk']) ? $penduduk['status_penduduk'] : '-'; ?></td>
+                                    <td class="text-center">
+                                        <?php if(!empty($penduduk['no_kk'])) { ?>
+                                            <a href="<?= BASEURL; ?>/kartukeluarga/detail/<?= $penduduk['no_kk']; ?>" class="btn btn-primary btn-sm"><i class="fa fa-users"></i> Detail</a>
+                                        <?php } ?>
+                                    </td>
                                     <?php if($_SESSION['level'] == 'rt') { ?>
                                         <td class="text-center">
                                             <a href="<?= BASEURL; ?>/penduduk/edit/<?= $penduduk['nik']; ?>" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Edit</a>

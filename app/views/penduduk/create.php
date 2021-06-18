@@ -37,11 +37,6 @@
                                     <input type="number" id="nik" name="nik" min="1" max="9999999999999999" placeholder="Masukkan NIK" class="form-control form-control-sm" value="<?php Flasher::oldData('nik'); ?>" autocomplete="off">
                                 </div>
                                 <div class="form-group">
-                                    <label for="noKk" class="form-control-label">No. KK</label>
-                                    <?php Flasher::error('no_kk'); ?>
-                                    <input type="number" id="noKk" name="no_kk" min="1" max="9999999999999999" placeholder="Masukkan No. KK" class="form-control form-control-sm" value="<?php Flasher::oldData('no_kk'); ?>" autocomplete="off">
-                                </div>
-                                <div class="form-group">
                                     <label for="namaPenduduk" class="form-control-label">Nama</label>
                                     <?php Flasher::error('nama_penduduk'); ?>
                                     <input type="text" id="namaPenduduk" name="nama_penduduk" placeholder="Masukkan Nama Penduduk" class="form-control form-control-sm" value="<?php Flasher::oldData('nama_penduduk'); ?>" autocomplete="off">

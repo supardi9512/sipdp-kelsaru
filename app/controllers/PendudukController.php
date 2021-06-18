@@ -45,7 +45,6 @@ class PendudukController extends Controller {
         $nik = $_POST['nik'];
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $no_kk = $_POST['no_kk'];
         $nama_penduduk = $_POST['nama_penduduk'];
         $tempat_lahir = $_POST['tempat_lahir'];
         $tgl_lahir = $_POST['tgl_lahir'];
@@ -72,12 +71,11 @@ class PendudukController extends Controller {
         }
 
         if($nik == '' || $duplicate_nik == TRUE || $username == '' || $duplicate_username == TRUE || 
-            $password == '' || $no_kk == '' || $nama_penduduk == '' || $tempat_lahir == '' || $tgl_lahir == '' || $jenis_kelamin == '' || 
+            $password == '' || $nama_penduduk == '' || $tempat_lahir == '' || $tgl_lahir == '' || $jenis_kelamin == '' || 
             $alamat == '' || $pekerjaan == '' || $pendidikan == '' || $agama == '' || $status_kawin == '') {
 
             Flasher::setOldData('nik', $nik);
             Flasher::setOldData('username', $username);
-            Flasher::setOldData('no_kk', $no_kk);
             Flasher::setOldData('nama_penduduk', $nama_penduduk);
             Flasher::setOldData('tempat_lahir', $tempat_lahir);
             Flasher::setOldData('tgl_lahir', $tgl_lahir);
@@ -102,10 +100,6 @@ class PendudukController extends Controller {
 
             if($password == '') {
                 Flasher::setError('Password wajib diisi!', 'danger', 'password');
-            }
-
-            if($no_kk == '') {
-                Flasher::setError('No. KK wajib diisi!', 'danger', 'no_kk');
             }
 
             if($nama_penduduk == '') {
@@ -153,7 +147,6 @@ class PendudukController extends Controller {
             Flasher::unsetOldData('nik');
             Flasher::unsetOldData('id_rt_id_rw');
             Flasher::unsetOldData('username');
-            Flasher::unsetOldData('no_kk');
             Flasher::unsetOldData('nama_penduduk');
             Flasher::unsetOldData('tempat_lahir');
             Flasher::unsetOldData('tgl_lahir');
@@ -197,7 +190,6 @@ class PendudukController extends Controller {
         $nik = $_POST['nik'];
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $no_kk = $_POST['no_kk'];
         $nama_penduduk = $_POST['nama_penduduk'];
         $tempat_lahir = $_POST['tempat_lahir'];
         $tgl_lahir = $_POST['tgl_lahir'];
@@ -229,7 +221,7 @@ class PendudukController extends Controller {
         }
 
         if($nik == '' || $duplicate_nik == TRUE || $username == '' || $duplicate_username == TRUE || 
-            $no_kk == '' || $nama_penduduk == '' || $tempat_lahir == '' || $tgl_lahir == '' || $jenis_kelamin == '' || 
+            $nama_penduduk == '' || $tempat_lahir == '' || $tgl_lahir == '' || $jenis_kelamin == '' || 
             $alamat == '' || $pekerjaan == '' || $pendidikan == '' || $agama == '' || $status_kawin == '') {
 
             if($nik == '') {
@@ -242,10 +234,6 @@ class PendudukController extends Controller {
                 Flasher::setError('Username wajib diisi!', 'danger', 'username');
             } elseif($duplicate_username == TRUE) {
                 Flasher::setError('Username sudah digunakan!', 'danger', 'username');
-            }
-
-            if($no_kk == '') {
-                Flasher::setError('No. KK wajib diisi!', 'danger', 'no_kk');
             }
 
             if($nama_penduduk == '') {

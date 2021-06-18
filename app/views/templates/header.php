@@ -54,6 +54,9 @@
                         <li class="<?= ($first_part == "penduduk") ? "active" : "noactive"; ?>">
                             <a href="<?= BASEURL; ?>/penduduk"> <i class="menu-icon fa fa-user"></i>Penduduk</a>
                         </li>
+                        <li class="<?= ($first_part == "kartukeluarga") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/kartukeluarga"> <i class="menu-icon fa fa-users"></i>Kartu Keluarga</a>
+                        </li>
                         <li class="<?= ($first_part == "penduduktetap") ? "active" : "noactive"; ?>">
                             <a href="<?= BASEURL; ?>/penduduktetap"> <i class="menu-icon fa fa-users"></i>Penduduk Tetap</a>
                         </li>

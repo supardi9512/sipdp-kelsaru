@@ -35,12 +35,7 @@
                                     <label for="nik" class="form-control-label">NIK</label>
                                     <?php Flasher::error('nik'); ?>
                                     <input type="hidden" name="nik_old" value="<?= $data['penduduk']['nik']; ?>">
-                                    <input type="number" id="nik" name="nik" min="1" max="9999999999999999" placeholder="Masukkan NIK" class="form-control form-control-sm" value="<?= $data['penduduk']['nik']; ?>" autocomplete="off">
-                                </div>
-                                <div class="form-group">
-                                    <label for="noKk" class="form-control-label">No. KK</label>
-                                    <?php Flasher::error('no_kk'); ?>
-                                    <input type="number" id="noKk" name="no_kk" min="1" max="9999999999999999" placeholder="Masukkan No. KK" class="form-control form-control-sm" value="<?= $data['penduduk']['no_kk']; ?>" autocomplete="off">
+                                    <input type="number" id="nik" name="nik" min="1" max="9999999999999999" placeholder="Masukkan NIK" class="form-control form-control-sm" value="<?= $data['penduduk']['nik']; ?>" autocomplete="off" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="namaPenduduk" class="form-control-label">Nama</label>
