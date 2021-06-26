@@ -121,7 +121,7 @@
                 <td><?= $data['ket_pindah']['agama']; ?></td>
             </tr>
             <tr>
-                <td>Pekerjaan Terakhir</td>
+                <td>Pekerjaan</td>
                 <td>:</td>
                 <td><?= $data['ket_pindah']['pekerjaan']; ?></td>
             </tr>
