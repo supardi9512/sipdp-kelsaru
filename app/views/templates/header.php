@@ -75,6 +75,9 @@
                         <li class="<?= ($first_part == "penduduktidakmampu") ? "active" : "noactive"; ?>">
                             <a href="<?= BASEURL; ?>/penduduktidakmampu"> <i class="menu-icon fa fa-users"></i>Penduduk Tidak Mampu</a>
                         </li>
+                        <li class="<?= ($first_part == "pendudukusaha") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/pendudukusaha"> <i class="menu-icon fa fa-shopping-cart"></i>Usaha Penduduk</a>
+                        </li>
                     <?php } ?>
                     <!-- <?php if($_SESSION['level'] == 'penduduk') { ?>
                         <li class="<?= ($first_part == "biodata") ? "active" : "noactive"; ?>">
@@ -93,6 +96,9 @@
                         </li>
                         <li class="<?= ($first_part == "kettidakmampu") ? "active" : "noactive"; ?>">
                             <a href="<?= BASEURL; ?>/kettidakmampu"> <i class="menu-icon fa fa-file"></i>Surat Ket. Tidak Mampu</a>
+                        </li>
+                        <li class="<?= ($first_part == "ketusaha") ? "active" : "noactive"; ?>">
+                            <a href="<?= BASEURL; ?>/ketusaha"> <i class="menu-icon fa fa-file"></i>Surat Ket. Usaha</a>
                         </li>
                     <?php } ?>
                 </ul>
